@@ -1,0 +1,193 @@
+/* Variables de color y fuente --------------------------------------------- */
+:root {
+  --color-primario: #004d40;
+  --color-secundario: #00796b;
+  --color-acento: #009688;
+  --color-fondo: #f1f8f7;
+  --color-texto: #263238;
+  --color-error: #c62828;
+  --color-borde: #b2dfdb;
+  --fuente-principal: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Reset y estilos globales ---------------------------------------------- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--fuente-principal);
+  background: #fff;
+  color: var(--color-texto);
+}
+
+body.login-page {
+  font-family: var(--fuente-principal);
+  background: linear-gradient(135deg, var(--color-primario), var(--color-secundario));
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-texto);
+}
+
+/* Componentes: Login ---------------------------------------------------- */
+.login-container {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 1rem;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  text-align: center;
+  margin: 2rem auto;
+}
+
+.login-title {
+  margin-bottom: 1.5rem;
+  font-size: 1.75rem;
+  color: var(--color-primario);
+}
+
+.error {
+  color: var(--color-error);
+  margin-bottom: 1rem;
+}
+
+.login-form .form-group {
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+.login-form label {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-weight: bold;
+}
+
+.login-form input[type="email"],
+.login-form input[type="password"] {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--color-borde);
+  border-radius: 0.5rem;
+  transition: border-color 0.3s;
+}
+
+.login-form input:focus {
+  outline: none;
+  border-color: var(--color-acento);
+}
+
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.btn {
+  flex: 1;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  background: var(--color-primario);
+  color: #fff;
+  transition: background 0.3s;
+}
+
+.btn:hover {
+  background: var(--color-secundario);
+}
+
+.btn-secondary {
+  background: #ccc;
+  color: #333;
+}
+
+.btn-secondary:hover {
+  background: #b3b3b3;
+}
+
+@media (max-width: 480px) {
+  .login-container {
+    margin: 1rem;
+    padding: 1.5rem;
+  }
+}
+
+/* Panel de administrador: Cabecera, Navegación, Contenido y Pie -------- */
+.admin-header {
+  background: var(--color-primario);
+  color: #fff;
+  padding: 1rem 2rem;
+  text-align: center;
+}
+
+.admin-nav {
+  background: #f7f7f7;
+  border-bottom: 2px solid var(--color-acento);
+}
+
+.admin-nav ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+}
+
+.admin-nav li + li {
+  margin-left: 2rem;
+}
+
+.admin-nav a {
+  display: block;
+  padding: 1rem;
+  text-decoration: none;
+  color: var(--color-texto);
+  font-weight: 600;
+  transition: background 0.3s, color 0.3s;
+}
+
+.admin-nav a:hover,
+.admin-nav a.active {
+  background: var(--color-acento);
+  color: #fff;
+}
+
+.admin-main {
+  padding: 2rem;
+}
+
+.admin-footer {
+  background: #f7f7f7;
+  padding: 1rem 2rem;
+  text-align: center;
+  border-top: 1px solid var(--color-borde);
+  color: var(--color-texto);
+  font-size: 0.9rem;
+}
+
+.logout-link {
+  color: var(--color-error);
+}
+
+.logout-link:hover {
+  background: var(--color-error);
+  color: #fff;
+}
+
+/* Layout flex para panel de admin ----------------------------------------- */
+.admin-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;   /* Ocupar toda la altura de la ventana */
+}
+
+.admin-main {
+  flex: 1;             /* Hace que main ocupe todo el espacio disponible */
+}
+
