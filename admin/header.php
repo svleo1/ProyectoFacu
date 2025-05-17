@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Panel Admin – Ovinos</title>
-  <link rel="stylesheet" href="../css/estilos.css">
+  <link rel="stylesheet" href="/ovinos/css/estilos.css">
 </head>
 
 <body class="admin-page">

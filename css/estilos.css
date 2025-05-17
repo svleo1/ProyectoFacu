@@ -1,4 +1,6 @@
-/* Variables de color y fuente --------------------------------------------- */
+/* =====================================================
+   Variables de color y fuente
+===================================================== */
 :root {
   --color-primario: #004d40;
   --color-secundario: #00796b;
@@ -10,7 +12,9 @@
   --fuente-principal: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Reset y estilos globales ---------------------------------------------- */
+/* =====================================================
+   Reset y estilos globales
+===================================================== */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -23,8 +27,10 @@ body {
   color: var(--color-texto);
 }
 
+/* =====================================================
+   Página de Login
+===================================================== */
 body.login-page {
-  font-family: var(--fuente-principal);
   background: linear-gradient(135deg, var(--color-primario), var(--color-secundario));
   min-height: 100vh;
   display: flex;
@@ -33,7 +39,6 @@ body.login-page {
   color: var(--color-texto);
 }
 
-/* Componentes: Login ---------------------------------------------------- */
 .login-container {
   background: #fff;
   padding: 2rem;
@@ -120,7 +125,9 @@ body.login-page {
   }
 }
 
-/* Panel de administrador: Cabecera, Navegación, Contenido y Pie -------- */
+/* =====================================================
+   Panel de administración: Cabecera, Navegación, Contenido y Pie
+===================================================== */
 .admin-header {
   background: var(--color-primario);
   color: #fff;
@@ -180,14 +187,317 @@ body.login-page {
   color: #fff;
 }
 
-/* Layout flex para panel de admin ----------------------------------------- */
+/* =====================================================
+   Layout general del panel admin (footer sticky)
+===================================================== */
 .admin-page {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;   /* Ocupar toda la altura de la ventana */
+  min-height: 100vh;
 }
 
 .admin-main {
-  flex: 1;             /* Hace que main ocupe todo el espacio disponible */
+  flex: 1;
 }
+
+/* =====================================================
+   Productores - Tabla y acciones
+===================================================== */
+.contenedor-productores {
+  padding: 2rem;
+}
+
+.contenedor-productores h2 {
+  margin-bottom: 1.5rem;
+  color: var(--color-primario);
+  text-align: center;
+}
+
+.btn-nuevo {
+  display: inline-block;
+  padding: 0.6rem 1rem;
+  background: var(--color-primario);
+  color: #fff;
+  font-weight: bold;
+  border-radius: 5px;
+  text-decoration: none;
+  margin-bottom: 1.5rem;
+  transition: background 0.3s;
+}
+
+.btn-nuevo:hover {
+  background: var(--color-secundario);
+}
+
+.tabla-productores {
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  background: #fff;
+}
+
+.tabla-productores th,
+.tabla-productores td {
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+.tabla-productores tbody td:nth-child(odd) {
+  background-color: #f5fdfc; /* fondo claro para columnas 1, 3, 5... */
+}
+
+.tabla-productores tbody tr:hover {
+  background-color: #f5fdfc;
+}
+
+.tabla-productores th {
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  font-weight: bold;
+}
+
+.btn-accion {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  color: #fff;
+  margin: 0 2px;
+  transition: background 0.3s;
+}
+
+.contenedor-expandir {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.btn-expandir {
+  background: var(--color-acento);
+  border: none;
+  border-radius: 50%;
+  padding: 0.6rem;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.btn-expandir:hover {
+  background: var(--color-secundario);
+  transform: scale(1.1);
+}
+
+.btn-expandir img {
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+
+
+.fila-oculta {
+  display: none;
+}
+
+.btn-accion.editar {
+  background-color: #4caf50;
+}
+
+.btn-accion.editar:hover {
+  background-color: #388e3c;
+}
+
+.btn-accion.eliminar {
+  background-color: #e53935;
+}
+
+.btn-accion.eliminar:hover {
+  background-color: #c62828;
+}
+
+/* =====================================================
+   Modal responsive y centrado
+===================================================== */
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  padding: 2rem;
+  z-index: 9999;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 500px;
+  max-height: 90vh;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  overflow: hidden; /* evita scrollbar aquí */
+}
+
+.modal h3 {
+  margin-bottom: 1rem;
+  color: var(--color-primario);
+  text-align: center;
+}
+
+.modal form {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto; /* solo el formulario hace scroll */
+  max-height: 70vh; /* ajusta según tu contenido */
+  padding-right: 0.5rem; /* margen para evitar que la barra toque el borde */
+}
+
+.modal form input,
+.modal form select {
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  border: 1px solid var(--color-primario);
+  border-radius: 0.5rem;
+  font-size: 1rem;
+}
+
+.modal form input:focus {
+  border-color: var(--color-acento);
+  outline: none;
+}
+
+.modal button {
+  padding: 0.75rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  cursor: pointer;
+  background: var(--color-primario);
+  color: #fff;
+  transition: background 0.3s ease;
+}
+
+.modal button:hover {
+  background: var(--color-secundario);
+}
+
+.modal button[type="button"] {
+  background: #ccc;
+  color: #333;
+}
+
+.modal button[type="button"]:hover {
+  background: #b3b3b3;
+}
+
+/* Fondo oscurecido */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 9998;
+}
+
+/* Responsive específico para pantallas muy pequeñas */
+@media (max-width: 480px) {
+  .modal {
+    width: 95%;
+    padding: 1.5rem;
+  }
+
+  .modal button {
+    font-size: 0.9rem;
+  }
+}
+
+/*Barra de busqueda de crud productores*/
+.acciones-tabla {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.btn-nuevo {
+  padding: 0.5rem 1rem;
+  background: var(--color-primario);
+  color: #fff;
+  font-weight: 600;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.btn-nuevo:hover {
+  background: var(--color-secundario);
+}
+
+.busqueda-dni {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.busqueda-dni label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-texto);
+  margin-bottom: 0.3rem;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.input-busqueda {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--color-borde);
+  border-radius: 6px;
+  font-size: 0.95rem;
+  width: 220px;
+  background: #fff;
+  transition: border-color 0.3s ease;
+}
+
+.input-busqueda:focus {
+  outline: none;
+  border-color: var(--color-acento);
+}
+
+@media (max-width: 600px) {
+  .acciones-tabla {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .busqueda-dni {
+    align-items: stretch;
+  }
+
+  .input-busqueda {
+    width: 100%;
+  }
+
+  .btn-nuevo {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@keyframes parpadeo {
+  0%, 100% { background-color: #e0f7fa; }
+  50% { background-color: #b2ebf2; }
+}
+
+.resaltado-temporal {
+  animation: parpadeo 1s ease-in-out 2; /* 2 parpadeos */
+  box-shadow: inset 0 0 0 9999px rgba(0, 150, 136, 0.1);
+  transition: background-color 1s ease;
+}
+
+
 

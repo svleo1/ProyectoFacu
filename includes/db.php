@@ -1,6 +1,6 @@
 <?php
 $host = 'localhost';
-$db   = 'sistema_ovinos';
+$db   = 'sistema_ovinos_db';
 $user = 'root';
 $pass = ''; // o tu contraseña si le pusiste una
 
